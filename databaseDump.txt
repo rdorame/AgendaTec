@@ -1,0 +1,331 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.6.2
+-- Dumped by pg_dump version 9.6.2
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: eventos; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE eventos (
+    id integer NOT NULL,
+    nombre_evento text,
+    descripcion text,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    picture character varying,
+    categorias character varying,
+    "fechaInic" date,
+    "fechaFin" date,
+    autorizado boolean,
+    costo integer,
+    contacto character varying
+);
+
+
+ALTER TABLE eventos OWNER TO postgres;
+
+--
+-- Name: eventos_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE eventos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE eventos_id_seq OWNER TO postgres;
+
+--
+-- Name: eventos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE eventos_id_seq OWNED BY eventos.id;
+
+
+--
+-- Name: relationships; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE relationships (
+    id integer NOT NULL,
+    follower_id integer,
+    followed_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE relationships OWNER TO postgres;
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE relationships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE relationships_id_seq OWNER TO postgres;
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE relationships_id_seq OWNED BY relationships.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    matricula character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    password_digest character varying,
+    remember_digest character varying,
+    admin boolean DEFAULT false,
+    departamento character varying
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: eventos id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY eventos ALTER COLUMN id SET DEFAULT nextval('eventos_id_seq'::regclass);
+
+
+--
+-- Name: relationships id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY relationships ALTER COLUMN id SET DEFAULT nextval('relationships_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Data for Name: eventos; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY eventos (id, nombre_evento, descripcion, user_id, created_at, updated_at, picture, categorias, "fechaInic", "fechaFin", autorizado, costo, contacto) FROM stdin;
+\.
+
+
+--
+-- Name: eventos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('eventos_id_seq', 1, false);
+
+
+--
+-- Data for Name: relationships; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY relationships (id, follower_id, followed_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: relationships_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('relationships_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_migrations (version) FROM stdin;
+20170507233837
+20160408171036
+20160408170837
+20160403175939
+20160408154826
+20160404094843
+20160404075310
+20160404071559
+20160404225249
+20160403212434
+20160403211131
+20160408171236
+20160404051714
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY users (id, matricula, created_at, updated_at, password_digest, remember_digest, admin, departamento) FROM stdin;
+1	a00397978	2017-05-09 03:53:30.404109	2017-05-09 03:53:30.404109	$2a$10$IWcjz.FczoSIvS.nRwILPO4uNziqDV7pBrdN94zeUOWpK0jTvzSOC	\N	t	Administrador
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Name: eventos eventos_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY eventos
+    ADD CONSTRAINT eventos_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: relationships relationships_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY relationships
+    ADD CONSTRAINT relationships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_eventos_on_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_eventos_on_user_id ON eventos USING btree (user_id);
+
+
+--
+-- Name: index_eventos_on_user_id_and_created_at; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_eventos_on_user_id_and_created_at ON eventos USING btree (user_id, created_at);
+
+
+--
+-- Name: index_relationships_on_followed_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_relationships_on_followed_id ON relationships USING btree (followed_id);
+
+
+--
+-- Name: index_relationships_on_follower_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_relationships_on_follower_id ON relationships USING btree (follower_id);
+
+
+--
+-- Name: index_relationships_on_follower_id_and_followed_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_relationships_on_follower_id_and_followed_id ON relationships USING btree (follower_id, followed_id);
+
+
+--
+-- Name: index_users_on_matricula; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_matricula ON users USING btree (matricula);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
