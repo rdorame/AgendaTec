@@ -1,0 +1,22 @@
+Run options: --seed 13663
+
+# Running:
+
+E
+
+Finished in 0.016251s, 61.5329 runs/s, 0.0000 assertions/s.
+
+  1) Error:
+UsersLoginTest#test_login_with_invalid_information:
+ActiveRecord::StatementInvalid: PG::UndefinedColumn: ERROR:  column "name" of relation "users" does not exist
+LINE 1: INSERT INTO "users" ("name", "email", "password_digest", "cr...
+                             ^
+: INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "id") VALUES ('Michael Example', 'michael@example.com', '$2a$04$FNjQ2IJ/eAGXXn.mQnuK5uchJ92z1Eyvv1qkzKqbqb59v/jPRp10q', '2016-04-04 05:04:05', '2016-04-04 05:04:05', 762146111)
+    
+
+Error:
+UsersLoginTest#test_login_with_invalid_information:
+NoMethodError: undefined method `each' for nil:NilClass
+    
+
+1 runs, 0 assertions, 0 failures, 1 errors, 0 skips

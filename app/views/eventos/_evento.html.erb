@@ -1,0 +1,17 @@
+<li id="evento-<%= evento.id %>">
+  <%= link_to gravatar_for(evento.user, size: 50), evento.user %>
+  <span class="user"> <h3><%= link_to evento.user.departamento.capitalize, evento.user %></h3></span>
+  <span class="content">
+  <h3> <%= evento.categorias %> </h4>
+  <%= evento.nombre_evento %>
+  <br>
+  <%= evento.descripcion %>
+  <%= image_tag evento.picture.url if evento.picture? %></span>
+  <span class="timestamp">
+    Creado hace <%= time_ago_in_words(evento.created_at) %>
+    <% if current_user?(evento.user) %>
+      <%= link_to "Borrar", evento, method: :delete,
+                                       data: { confirm: "¿Estás seguro?" } %>
+    <% end %>
+  </span>
+</li>

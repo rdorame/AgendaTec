@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+orange:
+  nombre_evento: "Colecta de víveres"
+  descripcion: "MyText"
+  created_at: <%= 10.minutes.ago %>
+  user: michael
+
+tau_manifesto:
+  nombre_evento: "Colecta de víveres2"
+  descripcion: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= 3.years.ago %>
+  user: michael
+
+cat_video:
+  nombre_evento: "Colecta de víveres3"
+  descripcion: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+most_recent:
+  nombre_evento: "Colecta de víveres4"
+  descripcion: "Check out the @tauday site by @mhartl: http://tauday.com"
+  created_at: <%= Time.zone.now %>
+  user: michael
+

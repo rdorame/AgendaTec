@@ -1,0 +1,6 @@
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+
+<h1><%= current_user.departamento %></h1>
+<%= current_user.matricula.capitalize %>
+<!--<span><%= link_to "Ver perfil", current_user %></span>-->
+<span><%= pluralize(current_user.eventos.count, "eventos creados") %></span>

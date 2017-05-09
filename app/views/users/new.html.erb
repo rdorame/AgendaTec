@@ -1,0 +1,24 @@
+<% provide(:title, 'Crear usuario') %>
+<h1>Crear usuario</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+       <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :Usuario %>
+      <%= f.text_field :matricula, class: 'form-control' %>
+
+      <%= f.label :Contraseña %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirma tu contraseña" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.label :Departamento %>
+      <%= f.select :departamento, ['Cultura', 'Centro de Vida y Carrera', 'Programas Internacionales']%>
+
+      <%= f.submit "Crear usuario", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

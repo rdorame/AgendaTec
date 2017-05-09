@@ -1,0 +1,31 @@
+<%= form_for(@evento,html: { multipart: true }) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-group">
+      <label for="nombre_evento">Título</label>
+        <%= f.text_field :nombre_evento, placeholder: "" %>
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+        <%= f.text_area :descripcion, placeholder: "" %>
+    </div>
+    <div class="form-group">
+      <label for="tipo">Tipo de evento</label>
+        <%= f.select :categorias, ['Aviso', 'Evento']%>
+    </div>
+    <div class="form-group">
+      <label for="tipo">Imagen del evento</label>
+        <span class="picture">
+          <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+        </span>
+    </div>
+  <%= f.submit "Crear evento", class: "btn btn-primary" %>
+<% end %>
+
+<script type="text/javascript">
+  $('#evento_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('El tamaño máximo permitido es 5MB. Escoge otra imagen por favor.');
+    }
+  });
+</script>

@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+michael:
+  matricula: a00000078
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+archer:
+
+  matricula: a01322865
+  password_digest: <%= User.digest('password') %>
+
+lana:
+  matricula: a01322864
+  password_digest: <%= User.digest('password') %>
+
+malory:
+  matricula: a01322866
+  password_digest: <%= User.digest('password') %>
+
+archer2:
+
+  matricula: a01325500
+  password_digest: <%= User.digest('password') %>
+
+lana2:
+  matricula: a01325501
+  password_digest: <%= User.digest('password') %>
+
+malory2:
+  matricula: a01325502
+  password_digest: <%= User.digest('password') %>
+
+archer3:
+
+  matricula: a01325503
+  password_digest: <%= User.digest('password') %>
+
+lana3:
+  matricula: a01325504
+  password_digest: <%= User.digest('password') %>
+
+malory3:
+  matricula: a01325505
+  password_digest: <%= User.digest('password') %>
+
+malory4:
+  matricula: a01325506
+  password_digest: <%= User.digest('password') %>
