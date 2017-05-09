@@ -1,9 +1,10 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Agenda Tec}
+# Agenda Tec
 Official site for event/announcement creation that works with the weekly schedule of ITESM Puebla.
 
-## Installation
+##Getting Started
+This repository was created as a final project for the course Diseño y arquitectura de software (Ene 17 Gpo 1).
+
+### Installation
 Clone the repository:
 ```
 git clone https://github.com/rdorame/AgendaTec.git
@@ -16,6 +17,7 @@ and update it
 ```
 bundle update
 ```
+
 
 ## Usage
 TODO: Write usage instructions
