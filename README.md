@@ -1,8 +1,9 @@
 # Agenda Tec
 Official site for event/announcement creation that works with the weekly schedule of ITESM Puebla.
 
-##Getting Started
+## Getting Started
 This repository was created as a final project for the course Diseño y arquitectura de software (Ene 17 Gpo 1).
+We use a postgresql database and Rails 4.
 
 ### Installation
 Clone the repository:
@@ -17,22 +18,19 @@ and update it
 ```
 bundle update
 ```
+Then you must change the username and password on /config/database.yml
 
+Run the respective migrations
+```
+rake db:migrate
+```
 
-## Usage
-TODO: Write usage instructions
-## Contributing
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-## History
-TODO: Write history
-## Credits
-TODO: Write credits
-## License
-TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
+Run the seed file
+```
+rake db:seed
+```
+
+Run the server
+```
+rails server
+```
