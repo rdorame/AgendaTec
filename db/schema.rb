@@ -57,12 +57,4 @@ ActiveRecord::Schema.define(version: 20170507233837) do
 
   add_index "users", ["matricula"], name: "index_users_on_matricula", unique: true, using: :btree
 
-  create_table "usuario_celulars", force: :cascade do |t|
-    t.text     "matricula"
-    t.text     "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "eventos", "users"
 end
